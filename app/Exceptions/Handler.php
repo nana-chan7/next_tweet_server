@@ -25,5 +25,3 @@ class Handler extends ExceptionHandler
         return response()->json(['error' => 'Unauthenticated.'], 401);
     }
 }
-
-// ※ 認証に失敗したら、JSONデータを返す

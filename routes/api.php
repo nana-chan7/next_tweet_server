@@ -9,9 +9,11 @@ use Illuminate\Support\Facades\Route;
 //ルーティングのURL：「/api/xxxx」
 // TweetController
 Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/tweet/get', [TweetController::class, 'get']);
     Route::post('/tweet/add', [TweetController::class, 'add']);
-    Route::post('/regist/store', [RegistUserController::class, 'store']);
 });
+
+Route::post('/regist/store', [RegistUserController::class, 'store']);
 
 
 // AuthController

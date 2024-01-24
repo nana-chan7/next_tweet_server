@@ -20,7 +20,6 @@ class AuthController extends Controller
                 $data = ['error' => ['auth' => 'email or password error.']];
             }
             return response()->json($data);
-
         } catch (Exception $e) {
             return response()->json(['error' => ['auth' => 'Server error']], 500);
         }

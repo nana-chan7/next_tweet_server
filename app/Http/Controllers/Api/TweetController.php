@@ -13,8 +13,8 @@ class TweetController extends Controller
     function get()
     {
         //「tweets」テーブルのレコードをすべて取得
-        // SELECT * FROM tweets;
-        $tweets = Tweet::get();
+        // SELECT * FROM tweets JOIN .....;
+        $tweets = Tweet::with('user')->get();
         // JSONでレスポンス
         return response()->json($tweets);
     }
