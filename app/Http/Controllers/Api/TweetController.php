@@ -13,11 +13,15 @@ class TweetController extends Controller
     function get()
     {
         //「tweets」テーブルのレコードをすべて取得
-        // SELECT * FROM tweets JOIN user ON user.id = tweet.user_id ORDET BY created_at DESC;
+        // SELECT * FROM tweets 
+        // JOIN user ON user.id = tweet.user_id 
+        // ORDER BY created_at DESC
+        // OFFSET 0;
+        // LIMIT 25;
         $tweets = Tweet::with('user')
-                        ->orderBy('created_at, "DESC')
-                        ->limit(25)
-                        ->get();
+            ->orderBy('created_at', 'DESC')
+            ->limit(25)
+            ->get();
         // JSONでレスポンス
         return response()->json($tweets);
     }
