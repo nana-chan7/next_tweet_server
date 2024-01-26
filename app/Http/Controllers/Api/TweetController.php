@@ -20,6 +20,7 @@ class TweetController extends Controller
         // LIMIT 25;
         $tweets = Tweet::with('user')
             ->orderBy('created_at', 'DESC')
+            ->offset(0)
             ->limit(25)
             ->get();
         // JSONでレスポンス
@@ -35,6 +36,7 @@ class TweetController extends Controller
         // User IDが一致したらDB保存
         if ($user->id == $request->user_id) {
             $tweet = Tweet::create($request->all());
+            $tweet->user = $user;
             return response()->json($tweet);
         } else {
             return response()->json(
